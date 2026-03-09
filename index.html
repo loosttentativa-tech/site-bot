@@ -1,268 +1,332 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASTA BOT - Alugue um bot para seu grupo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASTA BOT - Alugue um bot para seu grupo</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
-        }
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI', Arial, sans-serif;
+}
 
-        body {
-            background: #050505;
-            color: white;
-            overflow-x: hidden;
-            position: relative;
-        }
+body{
+background:#050505;
+color:white;
+overflow-x:hidden;
+position:relative;
+}
 
-        /* --- FUNDO DINÂMICO --- */
-        body::before {
-            content: "";
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 20%),
-                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.07) 0%, transparent 25%),
-                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.04) 0%, transparent 30%);
-            animation: luzesGiram 25s linear infinite;
-            z-index: -1;
-        }
+/* --- FUNDO DINÂMICO --- */
+body::before{
+content:"";
+position:fixed;
+top:-50%;
+left:-50%;
+width:200%;
+height:200%;
+background-image:
+radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05) 0%, transparent 20%),
+radial-gradient(circle at 80% 70%, rgba(255,255,255,0.07) 0%, transparent 25%),
+radial-gradient(circle at 50% 50%, rgba(255,255,255,0.04) 0%, transparent 30%);
+animation:luzesGiram 25s linear infinite;
+z-index:-1;
+}
 
-        @keyframes luzesGiram {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+@keyframes luzesGiram{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
 
-        /* --- NAVBAR MODERNA --- */
-        nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            background: rgba(11, 11, 11, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+/* --- NAVBAR --- */
+nav{
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+background:rgba(11,11,11,0.8);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,0.1);
+position:sticky;
+top:0;
+z-index:100;
+}
 
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            background: linear-gradient(to right, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+.logo{
+font-size:22px;
+font-weight:bold;
+letter-spacing:2px;
+text-transform:uppercase;
+background:linear-gradient(to right,#fff,#888);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
 
-        /* --- HERO --- */
-        .hero {
-            height: 80vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            text-align: center;
-            padding: 20px;
-        }
+/* HERO */
 
-        .hero h1 {
-            font-size: clamp(32px, 8vw, 60px);
-            font-weight: 900;
-            margin-bottom: 20px;
-            line-height: 1.1;
-        }
+.hero{
+height:80vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+}
 
-        .hero p {
-            color: #aaa;
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 600px;
-        }
+.hero h1{
+font-size:clamp(32px,8vw,60px);
+font-weight:900;
+margin-bottom:20px;
+line-height:1.1;
+}
 
-        /* --- BOTÕES --- */
-        .btn, .botao {
-            padding: 14px 35px;
-            background: white;
-            color: black;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-            border: 1px solid white;
-            display: inline-block;
-        }
+.hero p{
+color:#aaa;
+font-size:1.2rem;
+margin-bottom:30px;
+max-width:600px;
+}
 
-        .btn:hover, .botao:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(255,255,255,0.3);
-            background: transparent;
-            color: white;
-        }
+/* BOTÕES */
 
-        /* --- CARDS (GLASSMORPHISM) --- */
-        .funcoes, .planos {
-            padding: 100px 20px;
-            text-align: center;
-        }
+.btn,.botao{
+padding:14px 35px;
+background:white;
+color:black;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
+border:1px solid white;
+display:inline-block;
+}
 
-        .cards, .planos-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
-        }
+.btn:hover,.botao:hover{
+transform:scale(1.05);
+box-shadow:0 0 25px rgba(255,255,255,0.3);
+background:transparent;
+color:white;
+}
 
-        .card, .plano {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            padding: 40px 25px;
-            width: 280px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
+/* CARDS */
 
-        .card:hover, .plano:hover {
-            border-color: rgba(255,255,255,0.4);
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.06);
-        }
+.funcoes,.planos{
+padding:100px 20px;
+text-align:center;
+}
 
-        .preco {
-            font-size: 42px;
-            font-weight: bold;
-            margin: 10px 0;
-        }
+.cards,.planos-grid{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:25px;
+}
 
-        /* --- WHATSAPP PULSANTE --- */
-        .zap {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25D366;
-            color: white;
-            width: 65px;
-            height: 65px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            text-decoration: none;
-            font-size: 30px;
-            z-index: 1000;
-            animation: zapPulse 2s infinite;
-        }
+.card,.plano{
+background:rgba(255,255,255,0.03);
+backdrop-filter:blur(15px);
+padding:40px 25px;
+width:280px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,0.08);
+transition:0.4s ease;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:15px;
+}
 
-        @keyframes zapPulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
+.card:hover,.plano:hover{
+border-color:rgba(255,255,255,0.4);
+transform:translateY(-10px);
+background:rgba(255,255,255,0.06);
+}
 
-        /* --- PAGAMENTO --- */
-        .pagamento {
-            padding: 70px 20px;
-            text-align: center;
-        }
+.preco{
+font-size:42px;
+font-weight:bold;
+margin:10px 0;
+}
 
-        .pagamento h2 {
-            margin-bottom: 20px;
-        }
+/* WHATSAPP */
 
-        footer {
-            padding: 40px;
-            text-align: center;
-            color: #555;
-            border-top: 1px solid #111;
-        }
+.zap{
+position:fixed;
+bottom:30px;
+right:30px;
+background:#25D366;
+color:white;
+width:65px;
+height:65px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+text-decoration:none;
+font-size:30px;
+z-index:1000;
+animation:zapPulse 2s infinite;
+}
 
-        /* --- RESPONSIVIDADE CELULAR --- */
-        @media(max-width: 700px) {
-            .card, .plano { width: 100%; max-width: 340px; }
-            .hero h1 { font-size: 36px; }
-            nav { padding: 15px; }
-        }
-    </style>
+@keyframes zapPulse{
+0%{box-shadow:0 0 0 0 rgba(37,211,102,0.7);}
+70%{box-shadow:0 0 0 15px rgba(37,211,102,0);}
+100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
+}
+
+/* PAGAMENTO */
+
+.pagamento{
+padding:70px 20px;
+text-align:center;
+}
+
+footer{
+padding:40px;
+text-align:center;
+color:#555;
+border-top:1px solid #111;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:700px){
+.card,.plano{width:100%;max-width:340px;}
+.hero h1{font-size:36px;}
+nav{padding:15px;}
+}
+
+/* --- BOTÃO DE MÚSICA --- */
+
+.music-control{
+position:fixed;
+bottom:30px;
+left:30px;
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,0.2);
+color:white;
+width:50px;
+height:50px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+z-index:1000;
+transition:0.3s;
+}
+
+.music-control:hover{
+background:rgba(255,255,255,0.2);
+transform:scale(1.1);
+}
+
+</style>
 </head>
 
 <body>
 
-    <nav>
-        <div class="logo">ASTA BOT</div>
-    </nav>
+<nav>
+<div class="logo">ASTA BOT</div>
+</nav>
 
-    <section class="hero">
-        <h1>🚀 DOMINE TUDO COM O ASTA BOT</h1>
-        <p>O bot que você precisa, pelo preço que você esperava.</p>
-        <a class="btn" href="https://wa.me/7588379574">Alugar Agora</a>
-    </section>
+<section class="hero">
+<h1>🚀 DOMINE TUDO COM O ASTA BOT</h1>
+<p>O bot que você precisa, pelo preço que você esperava.</p>
+<a class="btn" href="https://wa.me/7588379574">Alugar Agora</a>
+</section>
 
-    <section class="funcoes">
-        <h2>⚡ O que o bot faz?</h2>
-        <div class="cards">
-            <div class="card">🤖 Automação de grupos</div>
-            <div class="card">🎮 Jogos interativos</div>
-            <div class="card">👮 Moderação automática</div>
-            <div class="card">📊 Comandos avançados</div>
-        </div>
-    </section>
+<section class="funcoes">
+<h2>⚡ O que o bot faz?</h2>
+<div class="cards">
+<div class="card">🤖 Automação de grupos</div>
+<div class="card">🎮 Jogos interativos</div>
+<div class="card">👮 Moderação automática</div>
+<div class="card">📊 Comandos avançados</div>
+</div>
+</section>
 
-    <section class="planos">
-        <h2>💎 Planos</h2>
-        <div class="planos-grid">
-            <div class="plano">
-                <h3>Mensal</h3>
-                <p class="preco">R$10</p>
-                <p>30 dias de acesso</p>
-                <a class="botao" href="https://w.app/edfskx">Alugar</a>
-            </div>
-            <div class="plano">
-                <h3>Trimestral</h3>
-                <p class="preco">R$25</p>
-                <p>🔥 Plano com desconto</p>
-                <a class="botao" href="https://w.app/vlunst">Alugar</a>
-            </div>
-            <div class="plano">
-                <h3>Semestral</h3>
-                <p class="preco">R$45</p>
-                <p>💎 Melhor custo</p>
-                <a class="botao" href="https://wa.me/7588379574">Alugar</a>
-            </div>
-            <div class="plano">
-                <h3>Anual</h3>
-                <p class="preco">R$80</p>
-                <p>🏆 Melhor preço</p>
-                <a class="botao" href="https://wa.me/7588379574">Alugar</a>
-            </div>
-        </div>
-    </section>
+<section class="planos">
+<h2>💎 Planos</h2>
 
-    <section class="pagamento">
-        <h2>💰 Pagamento via PIX</h2>
-        <p>Após o pagamento envie o comprovante para liberação imediata.</p>
-        <p>⚠️ Caso tenha interesse basta chamar no WhatsApp ⚠️</p>
-    </section>
+<div class="planos-grid">
 
-    <footer>
-        © 2026 ASTA BOT - Todos os direitos reservados
-    </footer>
+<div class="plano">
+<h3>Mensal</h3>
+<p class="preco">R$10</p>
+<p>30 dias de acesso</p>
+<a class="botao" href="https://w.app/edfskx">Alugar</a>
+</div>
 
-    <a href="https://wa.me/7588379574" class="zap">💬</a>
+<div class="plano">
+<h3>Trimestral</h3>
+<p class="preco">R$25</p>
+<p>🔥 Plano com desconto</p>
+<a class="botao" href="https://w.app/vlunst">Alugar</a>
+</div>
+
+<div class="plano">
+<h3>Semestral</h3>
+<p class="preco">R$45</p>
+<p>💎 Melhor custo</p>
+<a class="botao" href="https://wa.me/7588379574">Alugar</a>
+</div>
+
+<div class="plano">
+<h3>Anual</h3>
+<p class="preco">R$80</p>
+<p>🏆 Melhor preço</p>
+<a class="botao" href="https://wa.me/7588379574">Alugar</a>
+</div>
+
+</div>
+</section>
+
+<section class="pagamento">
+<h2>💰 Pagamento via PIX</h2>
+<p>Após o pagamento envie o comprovante para liberação imediata.</p>
+<p>⚠️ Caso tenha interesse basta chamar no WhatsApp ⚠️</p>
+</section>
+
+<footer>
+© 2026 ASTA BOT - Todos os direitos reservados
+</footer>
+
+<a href="https://wa.me/7588379574" class="zap">💬</a>
+
+<!-- MUSICA -->
+
+<audio id="bgMusic" loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+</audio>
+
+<div class="music-control" onclick="toggleMusic()" id="musicBtn">
+🔈
+</div>
+
+<script>
+
+const music=document.getElementById("bgMusic");
+const btn=document.getElementById("musicBtn");
+let isPlaying=false;
+
+function toggleMusic(){
+if(isPlaying){
+music.pause();
+btn.innerHTML="🔈";
+}else{
+music.play();
+btn.innerHTML="🔊";
+}
+isPlaying=!isPlaying;
+}
+
+</script>
 
 </body>
 </html>
