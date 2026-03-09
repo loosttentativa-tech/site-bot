@@ -1,69 +1,370 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASTA BOT</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background: #35424a;
-            color: #ffffff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        nav {
-            margin: 20px 0;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #ffffff;
-        }
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-        footer {
-            background: #35424a;
-            color: #ffffff;
-            text-align: center;
-            padding: 10px 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASTA BOT</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:linear-gradient(180deg,#050505,#0b0b0b,#050505);
+color:white;
+}
+
+/* NAVBAR */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:#0b0b0b;
+border-bottom:1px solid #222;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+animation:pulse 3s infinite;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#aaa;
+}
+
+/* HERO */
+
+.hero{
+height:80vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+}
+
+.hero h1{
+font-size:50px;
+margin-bottom:20px;
+animation:aparecer 1s ease;
+}
+
+.hero p{
+color:#aaa;
+margin-bottom:30px;
+animation:aparecer 1.5s ease;
+}
+
+.btn{
+padding:12px 30px;
+background:white;
+color:black;
+border-radius:6px;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
+animation:aparecer 2s ease;
+}
+
+.btn:hover{
+transform:scale(1.1);
+box-shadow:0 0 20px white;
+}
+
+/* FUNÇÕES */
+
+.funcoes{
+padding:80px 20px;
+text-align:center;
+}
+
+.funcoes h2{
+margin-bottom:40px;
+font-size:32px;
+}
+
+.cards{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:25px;
+}
+
+.card{
+background:#111;
+padding:25px;
+width:220px;
+border-radius:12px;
+border:1px solid #222;
+transition:0.3s;
+cursor:pointer;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.05);
+border-color:white;
+box-shadow:0 0 20px rgba(255,255,255,0.2);
+}
+
+/* PLANOS */
+
+.planos{
+padding:80px 20px;
+background:#0a0a0a;
+text-align:center;
+}
+
+.planos h2{
+margin-bottom:40px;
+}
+
+.planos-grid{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:30px;
+}
+
+.plano{
+background:#111;
+padding:30px;
+width:230px;
+border-radius:12px;
+border:1px solid #333;
+transition:0.4s;
+cursor:pointer;
+}
+
+.plano:hover{
+transform:scale(1.08);
+border-color:white;
+box-shadow:0 0 25px rgba(255,255,255,0.2);
+}
+
+.preco{
+font-size:30px;
+margin:15px 0;
+}
+
+.botao{
+display:inline-block;
+margin-top:15px;
+padding:10px 20px;
+border:2px solid white;
+color:white;
+text-decoration:none;
+border-radius:6px;
+transition:0.3s;
+}
+
+.botao:hover{
+background:white;
+color:black;
+}
+
+/* PAGAMENTO */
+
+.pagamento{
+padding:70px 20px;
+text-align:center;
+}
+
+/* FOOTER */
+
+footer{
+background:#050505;
+padding:30px;
+text-align:center;
+color:#777;
+border-top:1px solid #222;
+}
+
+/* WHATSAPP FLUTUANTE */
+
+.zap{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+font-size:25px;
+padding:15px;
+border-radius:50%;
+text-decoration:none;
+box-shadow:0 0 15px rgba(0,0,0,0.5);
+}
+
+/* ANIMAÇÕES */
+
+@keyframes aparecer{
+0%{
+opacity:0;
+transform:translateY(30px);
+}
+100%{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes pulse{
+0%{opacity:1;}
+50%{opacity:0.6;}
+100%{opacity:1;}
+}
+
+/* RESPONSIVO */
+
+@media(max-width:700px){
+
+nav{
+flex-direction:column;
+gap:10px;
+}
+
+.hero h1{
+font-size:35px;
+}
+
+.cards{
+flex-direction:column;
+align-items:center;
+}
+
+.planos-grid{
+flex-direction:column;
+align-items:center;
+}
+
+}
+
+</style>
 </head>
+
 <body>
-    <header>
-        <h1>Welcome to ASTA BOT</h1>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
-        </nav>
-    </header>
-    <div class="container">
-        <h2>About ASTA BOT</h2>
-        <p>ASTA BOT is your personal assistant for managing tasks efficiently.</p>
-        <h2>Services</h2>
-        <ul>
-            <li>Task Management</li>
-            <li>Scheduling</li>
-            <li>Notifications</li>
-            <li>Analytics</li>
-        </ul>
-    </div>
-    <footer>
-        <p>&copy; 2026 ASTA BOT. All rights reserved.</p>
-    </footer>
+
+<!-- MENU -->
+
+<nav>
+
+<div class="logo">ASTA BOT</div>
+
+<div>
+<a href="#">Início</a>
+<a href="#">Funções</a>
+<a href="#">Planos</a>
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>🚀 Automatize seu grupo com o ASTA BOT</h1>
+
+<p>Moderação automática, jogos interativos e comandos avançados para seu grupo.</p>
+
+<a class="btn" href="https://wa.me/SEUNUMERO">Alugar Agora</a>
+
+</section>
+
+<!-- FUNÇÕES -->
+
+<section class="funcoes">
+
+<h2>⚡ O que o bot faz?</h2>
+
+<div class="cards">
+
+<div class="card">🤖 Automação de grupos</div>
+<div class="card">🎮 Jogos interativos</div>
+<div class="card">👮 Moderação automática</div>
+<div class="card">📊 Comandos avançados</div>
+
+</div>
+
+</section>
+
+<!-- PLANOS -->
+
+<section class="planos">
+
+<h2>💎 Planos</h2>
+
+<div class="planos-grid">
+
+<div class="plano">
+<h3>Mensal</h3>
+<p class="preco">R$10</p>
+<p>30 dias de acesso</p>
+<a class="botao" href="#">Alugar</a>
+</div>
+
+<div class="plano">
+<h3>Trimestral</h3>
+<p class="preco">R$25</p>
+<p>🔥 Plano com desconto</p>
+<a class="botao" href="#">Alugar</a>
+</div>
+
+<div class="plano">
+<h3>Semestral</h3>
+<p class="preco">R$45</p>
+<p>💎 Melhor custo</p>
+<a class="botao" href="#">Alugar</a>
+</div>
+
+<div class="plano">
+<h3>Anual</h3>
+<p class="preco">R$80</p>
+<p>🏆 Melhor preço</p>
+<a class="botao" href="#">Alugar</a>
+</div>
+
+</div>
+
+</section>
+
+<!-- PAGAMENTO -->
+
+<section class="pagamento">
+
+<h2>💰 Pagamento via PIX</h2>
+
+<p>Após o pagamento envie o comprovante para liberação imediata.</p>
+
+<p>⚠️ Caso tenha interesse basta chamar no WhatsApp ⚠️</p>
+
+</section>
+
+<footer>
+
+© 2026 ASTA BOT - Todos os direitos reservados
+
+</footer>
+
+<!-- BOTÃO WHATSAPP -->
+
+<a href="https://wa.me/SEUNUMERO" class="zap">
+💬
+</a>
+
 </body>
 </html>
