@@ -124,17 +124,22 @@
         }
 
         .card, .plano {
-            background: rgba(20, 20, 20, 0.4);
-            backdrop-filter: blur(12px);
-            padding: 25px;
-            width: 230px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            overflow: hidden;
-            transition: 0.5s;
-            cursor: pointer;
-        }
+    background: rgba(20, 20, 20, 0.4);
+    backdrop-filter: blur(12px);
+    padding: 35px 20px; /* Mais espaço em cima e embaixo */
+    width: 280px; /* Um pouco mais largo */
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+    transition: 0.5s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Espaço igual entre os textos */
+}
+
 
         /* LINHA DE BRILHO QUE PASSA NO CARD */
         .card::before, .plano::before {
@@ -210,9 +215,31 @@
         }
 
         @media(max-width:700px) {
-            nav { padding: 20px; flex-direction: column; }
-            .hero h1 { font-size: 35px; }
-        }
+    nav { 
+        padding: 20px; 
+        flex-direction: column; 
+    }
+    
+    .hero h1 { 
+        font-size: 32px; 
+    }
+
+    .planos-grid {
+        padding: 0 10px;
+    }
+
+    .plano {
+        width: 100%; /* No celular o card ocupa a largura disponível */
+        max-width: 320px; /* Mas não passa de 320px para não ficar gigante */
+        margin-bottom: 20px;
+    }
+
+    .botao {
+        width: 80%; /* Botão um pouco menor e centralizado */
+        padding: 10px;
+    }
+}
+
     </style>
 </head>
 <body>
