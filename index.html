@@ -38,6 +38,19 @@ animation:luzesGiram 25s linear infinite;
 z-index:-1;
 }
 
+/* Efeito visual pulsante para quando a música estiver tocando */
+.playing {
+    animation: pulse-music 1.5s infinite ease-in-out;
+    background: rgba(255, 255, 255, 0.3) !important;
+    border-color: #fff !important;
+}
+
+@keyframes pulse-music {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
 @keyframes luzesGiram{
 from{transform:rotate(0deg);}
 to{transform:rotate(360deg);}
@@ -303,9 +316,10 @@ transform:scale(1.1);
 
 <!-- MUSICA -->
 
-<audio id="bgMusic" loop>
-<source src="beabadoobee - the perfect pair (Official Audio)(MP3_160K).mp3" type="audio/mpeg">
+<audio id="bgMusic" loop autoplay>
+    <source src="beabadoobee - the perfect pair (Official Audio)(MP3_160K).mp3" type="audio/mpeg">
 </audio>
+
 
 <div class="music-control" onclick="toggleMusic()" id="musicBtn">
 🔈
@@ -315,39 +329,43 @@ transform:scale(1.1);
 const music = document.getElementById("bgMusic");
 const btn = document.getElementById("musicBtn");
 
-// Função para dar o play e atualizar o ícone
-function playAudio() {
+// Define o volume em 20% (0.2 de 1.0)
+music.volume = 0.2;
+
+// Tenta tocar assim que carregar
+window.addEventListener('load', () => {
     music.play().then(() => {
         btn.innerHTML = "🔊";
-    }).catch(error => {
-        console.log("Autoplay bloqueado pelo navegador. Aguardando interação.");
+        btn.classList.add("playing");
+    }).catch(err => {
+        console.log("O navegador bloqueou o autoplay. Clique em qualquer lugar para tocar.");
     });
-}
+});
 
-// Alternar entre Play/Pause no botão
+// Alternar manual
 function toggleMusic() {
     if (music.paused) {
         music.play();
         btn.innerHTML = "🔊";
+        btn.classList.add("playing");
     } else {
         music.pause();
         btn.innerHTML = "🔈";
+        btn.classList.remove("playing");
     }
 }
 
-// Tenta tocar automaticamente assim que o usuário interagir com o site (clique ou scroll)
-window.addEventListener('click', () => {
-    if (music.paused && btn.innerHTML === "🔈") {
-        playAudio();
-    }
-}, { once: true }); // Executa apenas uma vez
-
-window.addEventListener('scroll', () => {
-    if (music.paused && btn.innerHTML === "🔈") {
-        playAudio();
+// Backup: Se o autoplay falhar, toca no primeiro clique no site
+document.body.addEventListener('click', () => {
+    if (music.paused) {
+        music.play();
+        btn.innerHTML = "🔊";
+        btn.classList.add("playing");
     }
 }, { once: true });
 </script>
 
+
+
 </body>
-</html>
+	</html>
