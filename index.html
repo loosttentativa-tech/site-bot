@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CAVALEIRO BOT - Alugue um bot para seu grupo</title>
+<title>CAVALEIROS BOT - Alugue um bot para seu grupo</title>
 
 <link rel="icon" type="image/jpg" href="https://storageblack.cloud/midia/1773117490092.jpg">
 
@@ -305,5 +305,166 @@ footer{padding:40px; text-align:center; color:#555; border-top:1px solid #111;}
 </nav>
 
 <section class="hero">
-<h1>ALUGUE JÁ O CAVALEIRO BOT!
-    
+<h1>ALUGUE JÁ O CAVALEIRO BOT!</h1>
+<p>O bot que você precisa, com a melhor economia do mercado.</p>
+<div class="hero-btns">
+    <button class="btn" onclick="openModal('modalPrecos')">Ver Planos e Preços</button>
+    <button class="btn outline" onclick="openModal('modalFuncoes')">O que ele faz?</button>
+</div>
+</section>
+
+<div id="modalFuncoes" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('modalFuncoes')">&times;</span>
+        <div style="text-align:center;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 10px;">⚡ Funcionalidades</h2>
+            <p style="color: #666;">Conheça o poder do Cavaleiro Bot</p>
+            
+            <div class="cards-grid">
+                <div class="card-item">
+                    <h3>🤖 Automação</h3>
+                    <p>Controle automático de boas-vindas, despedidas e links proibidos no seu grupo.</p>
+                </div>
+                <div class="card-item">
+                    <h3>🎮 Jogos</h3>
+                    <p>Sistema de economia com cassino, duelos e jogos interativos para engajar membros.</p>
+                </div>
+                <div class="card-item">
+                    <h3>👮 Moderação</h3>
+                    <p>Anti-flood, anti-trava e ferramentas avançadas para manter a ordem no chat.</p>
+                </div>
+                <div class="card-item">
+                    <h3>📊 Comandos</h3>
+                    <p>Mais de 100 comandos úteis de pesquisa, download e utilidades diárias.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalPrecos" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('modalPrecos')">&times;</span>
+        <div style="text-align:center;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 5px;">💎 Nossos <span style="color:#ffd700">Planos</span></h2>
+            <p style="color: #666;">Escolha o acesso ideal para o seu grupo</p>
+            
+            <div class="planos-grid">
+                <div class="plano">
+                    <h3 style="color:#aaa">Mensal</h3>
+                    <div class="preco">R$10</div>
+                    <ul class="beneficios">
+                        <li>✅ Todos os Comandos</li>
+                        <li>✅ Suporte 24h</li>
+                        <li>✅ 30 Dias de Acesso</li>
+                    </ul>
+                    <a class="botao-plano" href="https://wa.me/554298165943?text=Quero%20o%20plano%20mensal">Assinar</a>
+                </div>
+
+                <div class="plano destaque">
+                    <h3 style="color:#ffd700">Trimestral</h3>
+                    <div class="preco">R$25</div>
+                    <ul class="beneficios" style="color:#bbb">
+                        <li>✅ Todos os Comandos</li>
+                        <li>✅ Suporte Prioritário</li>
+                        <li>✅ 90 Dias de Acesso</li>
+                        <li>⭐ Economia Real</li>
+                    </ul>
+                    <a class="botao-plano" href="https://wa.me/554298165943?text=Quero%20o%20plano%20trimestral" style="background:#ffd700">Assinar</a>
+                </div>
+
+                <div class="plano">
+                    <h3 style="color:#aaa">Semestral</h3>
+                    <div class="preco">R$45</div>
+                    <ul class="beneficios">
+                        <li>✅ Todos os Comandos</li>
+                        <li>✅ Suporte Prioritário</li>
+                        <li>✅ 180 Dias de Acesso</li>
+                        <li>💎 Desconto Especial</li>
+                    </ul>
+                    <a class="botao-plano" href="https://wa.me/554298165943?text=Quero%20o%20plano%20semestral">Assinar</a>
+                </div>
+
+                <div class="plano">
+                    <h3 style="color:#aaa">Anual</h3>
+                    <div class="preco">R$80</div>
+                    <ul class="beneficios">
+                        <li>✅ Todos os Comandos</li>
+                        <li>✅ Suporte VIP</li>
+                        <li>✅ 365 Dias de Acesso</li>
+                        <li>🏆 Melhor Custo-Benefício</li>
+                    </ul>
+                    <a class="botao-plano" href="https://wa.me/554298165943?text=Quero%20o%20plano%20anual">Assinar</a>
+                </div>
+            </div>
+            <p style="margin-top: 40px; color: #444; font-size: 13px;">⚡ Pagamento via PIX • Ativação Imediata ⚡</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+© 2026 CAVALEIRO BOT - Todos os direitos reservados
+</footer>
+
+<a href="https://wa.me/554298165943" class="zap">💬</a>
+
+<audio id="bgMusic" loop>
+<source src="beabadoobee - the perfect pair (Official Audio)(MP3_160K).mp3" type="audio/mpeg">
+</audio>
+
+<div class="music-control" onclick="toggleMusic()" id="musicBtn">🔈</div>
+
+<script>
+/* PARTICULAS */
+particlesJS("particles-js", {
+    particles:{
+        number:{value:80},
+        color:{value:"#ffffff"},
+        shape:{type:"circle"},
+        opacity:{value:0.5,random:true},
+        size:{value:3,random:true},
+        line_linked:{enable:true,distance:150,color:"#ffffff",opacity:0.2},
+        move:{enable:true,speed:2}
+    },
+    interactivity:{
+        events:{onhover:{enable:true,mode:"repulse"},onclick:{enable:true,mode:"push"}}
+    },
+    retina_detect:true
+});
+
+/* FUNÇÕES DOS MODAIS */
+function openModal(id) {
+    document.getElementById(id).style.display = "block";
+    document.body.style.overflow = "hidden";
+}
+
+function closeModal(id) {
+    document.getElementById(id).style.display = "none";
+    document.body.style.overflow = "auto";
+}
+
+window.onclick = function(event) {
+    if (event.target.className === 'modal') {
+        event.target.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+}
+
+/* MUSICA */
+const music=document.getElementById("bgMusic");
+const btn=document.getElementById("musicBtn");
+music.volume=0.2;
+
+function toggleMusic(){
+    if(music.paused){
+        music.play();
+        btn.innerHTML="🔊";
+    }else{
+        music.pause();
+        btn.innerHTML="🔈";
+    }
+}
+</script>
+
+</body>
+</html>
