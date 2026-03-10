@@ -312,22 +312,41 @@ transform:scale(1.1);
 </div>
 
 <script>
+const music = document.getElementById("bgMusic");
+const btn = document.getElementById("musicBtn");
 
-const music=document.getElementById("bgMusic");
-const btn=document.getElementById("musicBtn");
-let isPlaying=false;
-
-function toggleMusic(){
-if(isPlaying){
-music.pause();
-btn.innerHTML="🔈";
-}else{
-music.play();
-btn.innerHTML="🔊";
-}
-isPlaying=!isPlaying;
+// Função para dar o play e atualizar o ícone
+function playAudio() {
+    music.play().then(() => {
+        btn.innerHTML = "🔊";
+    }).catch(error => {
+        console.log("Autoplay bloqueado pelo navegador. Aguardando interação.");
+    });
 }
 
+// Alternar entre Play/Pause no botão
+function toggleMusic() {
+    if (music.paused) {
+        music.play();
+        btn.innerHTML = "🔊";
+    } else {
+        music.pause();
+        btn.innerHTML = "🔈";
+    }
+}
+
+// Tenta tocar automaticamente assim que o usuário interagir com o site (clique ou scroll)
+window.addEventListener('click', () => {
+    if (music.paused && btn.innerHTML === "🔈") {
+        playAudio();
+    }
+}, { once: true }); // Executa apenas uma vez
+
+window.addEventListener('scroll', () => {
+    if (music.paused && btn.innerHTML === "🔈") {
+        playAudio();
+    }
+}, { once: true });
 </script>
 
 </body>
