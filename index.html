@@ -26,7 +26,6 @@ position:relative;
 }
 
 /* PARTICULAS */
-
 #particles-js{
 position:fixed;
 width:100%;
@@ -37,7 +36,6 @@ z-index:-2;
 }
 
 /* NAVBAR */
-
 nav{
 display:flex;
 justify-content:center;
@@ -62,7 +60,6 @@ background:linear-gradient(to right,#fff,#888);
 }
 
 /* HERO */
-
 .hero{
 height:80vh;
 display:flex;
@@ -87,7 +84,6 @@ max-width:600px;
 }
 
 /* BOTÕES */
-
 .btn,.botao{
 padding:14px 35px;
 background:white;
@@ -98,6 +94,7 @@ font-weight:bold;
 transition:0.3s;
 border:1px solid white;
 display:inline-block;
+cursor:pointer;
 }
 
 .btn:hover,.botao:hover{
@@ -107,23 +104,10 @@ background:transparent;
 color:white;
 }
 
-/* SEÇÕES */
-
-.funcoes,.planos{
-padding:100px 20px;
-text-align:center;
-}
-
 /* CARDS */
-
-.cards,.planos-grid{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:25px;
-}
-
-.card,.plano{
+.funcoes{padding:100px 20px; text-align:center;}
+.cards{display:flex; flex-wrap:wrap; justify-content:center; gap:25px;}
+.card{
 background:rgba(255,255,255,0.03);
 backdrop-filter:blur(15px);
 padding:40px 25px;
@@ -137,37 +121,103 @@ align-items:center;
 gap:15px;
 }
 
-.card:hover,.plano:hover{
-border-color:rgba(255,255,255,0.4);
-transform:translateY(-10px);
-background:rgba(255,255,255,0.06);
+/* MODAL DE PREÇOS */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.95);
+    backdrop-filter: blur(15px);
+    overflow-y: auto;
+}
+
+.modal-content {
+    margin: 5% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 1100px;
+    position: relative;
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+    from {opacity: 0; transform: translateY(50px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: -10px;
+    font-size: 45px;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+}
+
+.close-modal:hover { color: #ff4444; }
+
+.planos-grid{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+margin-top: 30px;
+}
+
+.plano{
+background:rgba(255,255,255,0.05);
+padding:30px 20px;
+width:240px;
+border-radius:15px;
+border:1px solid rgba(255,255,255,0.1);
+text-align:center;
 }
 
 .preco{
-font-size:42px;
+font-size:38px;
 font-weight:bold;
-margin:10px 0;
+margin:15px 0;
+color: #fff;
 }
 
-/* WHATSAPP */
-
-.zap{
+/* WHATSAPP & MUSICA */
+.zap, .music-control {
 position:fixed;
 bottom:30px;
+z-index:1000;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+cursor:pointer;
+transition:0.3s;
+}
+
+.zap{
 right:30px;
 background:linear-gradient(135deg,#25D366,#128C7E);
 color:white;
 width:65px;
 height:65px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:50%;
 text-decoration:none;
 font-size:30px;
-z-index:1000;
 box-shadow:0 10px 30px rgba(37,211,102,0.5);
 animation:zapPulse 2s infinite;
+}
+
+.music-control{
+left:30px;
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,0.2);
+color:white;
+width:50px;
+height:50px;
 }
 
 @keyframes zapPulse{
@@ -176,62 +226,7 @@ animation:zapPulse 2s infinite;
 100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
 }
 
-/* PAGAMENTO */
-
-.pagamento{
-padding:70px 20px;
-text-align:center;
-}
-
-footer{
-padding:40px;
-text-align:center;
-color:#555;
-border-top:1px solid #111;
-}
-
-/* RESPONSIVO */
-
-@media(max-width:700px){
-.card,.plano{width:100%;max-width:340px;}
-.hero h1{font-size:36px;}
-}
-
-/* BOTÃO MÚSICA */
-
-.music-control{
-position:fixed;
-bottom:30px;
-left:30px;
-background:rgba(255,255,255,0.1);
-backdrop-filter:blur(10px);
-border:1px solid rgba(255,255,255,0.2);
-color:white;
-width:50px;
-height:50px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-z-index:1000;
-transition:0.3s;
-}
-
-.music-control:hover{
-background:rgba(255,255,255,0.2);
-transform:scale(1.1);
-}
-
-.playing{
-animation:pulse 1.5s infinite;
-}
-
-@keyframes pulse{
-0%{transform:scale(1)}
-50%{transform:scale(1.1)}
-100%{transform:scale(1)}
-}
+footer{padding:40px; text-align:center; color:#555; border-top:1px solid #111;}
 
 </style>
 </head>
@@ -246,79 +241,58 @@ animation:pulse 1.5s infinite;
 
 <section class="hero">
 <h1>ALUGUE JÁ O CAVALEIRO BOT!</h1>
-<p>O bot que você precisa, pelo preço que você esperava.</p>
-<a class="btn" href="https://wa.me/554298165943?text=Oi%20quero%20alugar%20o%20bot">Alugar Agora</a>
+<p>O bot que você precisa, com a melhor economia do mercado.</p>
+<button class="btn" onclick="openModal()">Ver Planos e Preços</button>
 </section>
 
 <section class="funcoes">
 <h2>⚡ O que o bot faz?</h2>
-
 <div class="cards">
-
-<div class="card">
-<h3>🤖 Automação</h3>
-<p>Controle automático do seu grupo</p>
-</div>
-
-<div class="card">
-<h3>🎮 Jogos</h3>
-<p>Jogos interativos com economia</p>
-</div>
-
-<div class="card">
-<h3>👮 Moderação</h3>
-<p>Sistema avançado de moderação</p>
-</div>
-
-<div class="card">
-<h3>📊 Comandos</h3>
-<p>Diversos comandos úteis</p>
-</div>
-
+<div class="card"><h3>🤖 Automação</h3><p>Controle automático do seu grupo</p></div>
+<div class="card"><h3>🎮 Jogos</h3><p>Jogos interativos com economia</p></div>
+<div class="card"><h3>👮 Moderação</h3><p>Sistema avançado de moderação</p></div>
+<div class="card"><h3>📊 Comandos</h3><p>Diversos comandos úteis</p></div>
 </div>
 </section>
 
-<section class="planos">
-<h2>💎 Planos</h2>
-
-<div class="planos-grid">
-
-<div class="plano">
-<h3>Mensal</h3>
-<p class="preco">R$10</p>
-<p>30 dias de acesso</p>
-<a class="botao" href="https://wa.me/554298165943?text=Quero%20o%20plano%20mensal">Alugar</a>
+<div id="modalPrecos" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div style="text-align:center;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 10px;">💎 Nossos Planos</h2>
+            <p style="color: #aaa;">Escolha o que melhor se adapta ao seu grupo</p>
+            
+            <div class="planos-grid">
+                <div class="plano">
+                    <h3>Mensal</h3>
+                    <p class="preco">R$10</p>
+                    <p>30 dias de acesso</p>
+                    <a class="botao" href="https://wa.me/554298165943?text=Quero%20o%20plano%20mensal">Assinar</a>
+                </div>
+                <div class="plano" style="border-color: #ffd700;">
+                    <h3>Trimestral</h3>
+                    <p class="preco">R$25</p>
+                    <p>🔥 Mais popular</p>
+                    <a class="botao" href="https://wa.me/554298165943?text=Quero%20o%20plano%20trimestral">Assinar</a>
+                </div>
+                <div class="plano">
+                    <h3>Semestral</h3>
+                    <p class="preco">R$45</p>
+                    <p>💎 Melhor custo</p>
+                    <a class="botao" href="https://wa.me/554298165943?text=Quero%20o%20plano%20semestral">Assinar</a>
+                </div>
+                <div class="plano">
+                    <h3>Anual</h3>
+                    <p class="preco">R$80</p>
+                    <p>🏆 VIP Master</p>
+                    <a class="botao" href="https://wa.me/554298165943?text=Quero%20o%20plano%20anual">Assinar</a>
+                </div>
+            </div>
+            
+            <p style="margin-top: 40px; color: #888;">💰 Pagamento facilitado via PIX com liberação imediata.</p>
+        </div>
+    </div>
 </div>
-
-<div class="plano">
-<h3>Trimestral</h3>
-<p class="preco">R$25</p>
-<p>🔥 Plano com desconto</p>
-<a class="botao" href="https://wa.me/554298165943?text=Quero%20o%20plano%20trimestral">Alugar</a>
-</div>
-
-<div class="plano">
-<h3>Semestral</h3>
-<p class="preco">R$45</p>
-<p>💎 Melhor custo</p>
-<a class="botao" href="https://wa.me/554298165943?text=Quero%20o%20plano%20semestral">Alugar</a>
-</div>
-
-<div class="plano">
-<h3>Anual</h3>
-<p class="preco">R$80</p>
-<p>🏆 Melhor preço</p>
-<a class="botao" href="https://wa.me/554298165943?text=Quero%20o%20plano%20anual">Alugar</a>
-</div>
-
-</div>
-</section>
-
-<section class="pagamento">
-<h2>💰 Pagamento via PIX</h2>
-<p>Após o pagamento envie o comprovante para liberação imediata.</p>
-<p>⚠️ Caso tenha interesse basta chamar no WhatsApp</p>
-</section>
 
 <footer>
 © 2026 CAVALEIRO BOT - Todos os direitos reservados
@@ -330,58 +304,58 @@ animation:pulse 1.5s infinite;
 <source src="beabadoobee - the perfect pair (Official Audio)(MP3_160K).mp3" type="audio/mpeg">
 </audio>
 
-<div class="music-control" onclick="toggleMusic()" id="musicBtn">
-🔈
-</div>
+<div class="music-control" onclick="toggleMusic()" id="musicBtn">🔈</div>
 
 <script>
-
 /* PARTICULAS */
-
 particlesJS("particles-js", {
-particles:{
-number:{value:80},
-color:{value:"#ffffff"},
-shape:{type:"circle"},
-opacity:{value:0.5,random:true},
-size:{value:3,random:true},
-line_linked:{
-enable:true,
-distance:150,
-color:"#ffffff",
-opacity:0.2
-},
-move:{enable:true,speed:2}
-},
-interactivity:{
-events:{
-onhover:{enable:true,mode:"repulse"},
-onclick:{enable:true,mode:"push"}
-}
-},
-retina_detect:true
+    particles:{
+        number:{value:80},
+        color:{value:"#ffffff"},
+        shape:{type:"circle"},
+        opacity:{value:0.5,random:true},
+        size:{value:3,random:true},
+        line_linked:{enable:true,distance:150,color:"#ffffff",opacity:0.2},
+        move:{enable:true,speed:2}
+    },
+    interactivity:{
+        events:{onhover:{enable:true,mode:"repulse"},onclick:{enable:true,mode:"push"}}
+    },
+    retina_detect:true
 });
 
-/* MUSICA */
+/* FUNÇÕES DO MODAL */
+function openModal() {
+    document.getElementById("modalPrecos").style.display = "block";
+    document.body.style.overflow = "hidden";
+}
 
+function closeModal() {
+    document.getElementById("modalPrecos").style.display = "none";
+    document.body.style.overflow = "auto";
+}
+
+window.onclick = function(event) {
+    let modal = document.getElementById("modalPrecos");
+    if (event.target == modal) closeModal();
+}
+
+/* MUSICA */
 const music=document.getElementById("bgMusic");
 const btn=document.getElementById("musicBtn");
-
 music.volume=0.2;
 
 function toggleMusic(){
-if(music.paused){
-music.play();
-btn.innerHTML="🔊";
-btn.classList.add("playing");
-}else{
-music.pause();
-btn.innerHTML="🔈";
-btn.classList.remove("playing");
+    if(music.paused){
+        music.play();
+        btn.innerHTML="🔊";
+    }else{
+        music.pause();
+        btn.innerHTML="🔈";
+    }
 }
-}
-
 </script>
 
 </body>
-	</html>
+						</html>
+	
